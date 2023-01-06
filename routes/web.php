@@ -30,7 +30,12 @@ Route::group(['prefix'=>'dashboard'], function(){
     
 
 });
-Route::get('/category', [CategoryController::class, 'create']);
+Route::get('/category/create', [CategoryController::class, 'create']);
+Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category',        [CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/show/{id}',   [CategoryController::class, 'show'])->name('category.show');
+Route::get('/category/edit/{id}',   [CategoryController::class, 'edit'])->name('category.edit');
+Route::get('/category/destroy/{id}',   [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
 require __DIR__.'/auth.php';
