@@ -468,7 +468,7 @@ header .navbar {
 
 .blog-posts .down-content ul.post-info li a {
 	font-size: 14px;
-	color: #fff;
+	color: rgb(0, 0, 0);
 	font-weight: 400;
 	transition: all .3s;
 }
