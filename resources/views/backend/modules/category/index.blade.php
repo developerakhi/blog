@@ -6,21 +6,24 @@
         <!-- Area Chart -->
         <div class="container-fluid">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Category</h1>
+                    <h1 class="mb-0 text-gray-800">Category</h1>    
             </div>
             <div class="col-lg-12">
-                @if(session('msg'))
+                {{-- @if(session('msg'))
                     <div class="alert alert-{{session('cls')}}">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                         {!! session('msg') !!}
                     </div>
-                @endif
+                @endif --}}
 
 
                 <div class="row justify-content-center">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="h3 mb-0 text-gray-800">Category List</h4>
+                            <div class="d-flex justify-content-between">
+                                <h4 class="h3 mb-0 text-gray-800">Category List</h4>
+                                <a href="{{route('category.create')}}" class=""><button class="btn btn-success btn-sm">Add</button></a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped table-bordered table-hover">
@@ -72,31 +75,32 @@
             </div>
         </div>
 
-       
-            <script>
+        @if(session('msg'))
 
+            @push('js')
+                <script>
+                    Swal.fire({
+                    position: 'top-end',
+                    icon: '{{session('cls')}}',
+                    title: '{{session('msg')}}',
+                    showConfirmButton: false,
+                    timer: 3000
+                    })
+                </script>
+            @endpush
+
+        @endif
+
+       @push('js')
+            <script>
                 $('.delete').on('click', function(){
 
                     let id = $(this).attr('data-id')
                 
-                    Swal.fire({
-                        title: 'Are you sure to Delete?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $(`#form_${id}`).submit()
-                                
-                            }
-                        })
+                    
                 })
-                
             </script>
-
+        @endpush
        
         
 @endsection

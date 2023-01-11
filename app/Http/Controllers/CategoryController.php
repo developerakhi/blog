@@ -76,7 +76,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
        
-        session()->flash('cls', 'danger');
+        session()->flash('cls', 'error');
         session()->flash('msg', 'Category Deleted Successfully');
 
         return redirect()->route('category.index');
