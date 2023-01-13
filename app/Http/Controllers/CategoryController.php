@@ -14,6 +14,7 @@ class CategoryController extends Controller
 
     public function create(){
         return view('backend.modules.category.create');
+        
     }
 
     public function store(Request $request){
@@ -34,6 +35,7 @@ class CategoryController extends Controller
 
         return redirect()->route('category.index');
     }
+
     public function show(Request $request, $id){
         $category = Category::find($id);
         return view('backend.modules.category.show', compact('category'));
